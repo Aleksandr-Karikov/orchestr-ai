@@ -76,6 +76,12 @@ pnpm test
 # E2E tests
 pnpm test:e2e
 
+# Integration tests (database and queue)
+pnpm test:integration
+
+# Integration tests in watch mode
+pnpm test:integration:watch
+
 # Test coverage
 pnpm test:cov
 ```
@@ -97,6 +103,48 @@ E2E tests use a separate test database (`orchestr_ai_test` by default) to avoid 
 - `test/services.e2e-spec.ts` - Service CRUD operations with relationships tests (skipped until controllers implemented)
 - `test/contracts.e2e-spec.ts` - Contract CRUD operations and versioning tests (skipped until controllers implemented)
 - `test/indexer.e2e-spec.ts` - Indexing workflow tests (skipped until controllers implemented)
+
+#### Integration Test Setup
+
+Integration tests verify database operations and queue system functionality. They require both PostgreSQL and Redis to be running.
+
+**Prerequisites:**
+
+1. **PostgreSQL** - Must be running and accessible
+2. **Redis** - Must be running and accessible
+3. **Test Database** - A separate test database will be used (`orchestr_ai_test` by default)
+
+**Environment Variables for Integration Tests:**
+
+- `DB_DATABASE_TEST` - Test database name (default: `orchestr_ai_test`)
+- `REDIS_DB` - Redis database number for tests (default: `1` - uses DB 1 to avoid conflicts)
+- All other database and Redis connection variables are the same as development
+
+**Integration Test Files:**
+
+- `test/integration/database/database.integration.spec.ts` - Database entity CRUD, relationships, and validation tests ✅
+- `test/integration/database/migrations.integration.spec.ts` - Database migration and schema tests ✅
+- `test/integration/queue/queue.integration.spec.ts` - BullMQ queue operations and job processing tests ✅
+
+**Running Integration Tests:**
+
+```bash
+# Run all integration tests
+pnpm test:integration
+
+# Run specific integration test file
+pnpm test:integration -- database.integration.spec.ts
+
+# Run in watch mode
+pnpm test:integration:watch
+```
+
+**Note:** Make sure Docker services are running before executing integration tests:
+
+```bash
+# From project root
+docker-compose up -d
+```
 - `test/error-handling.e2e-spec.ts` - Error handling tests (404, 400, 500) (skipped until controllers implemented)
 - `test/rate-limiting.e2e-spec.ts` - Rate limiting tests (skipped until controllers implemented)
 

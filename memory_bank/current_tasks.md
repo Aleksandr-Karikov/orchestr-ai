@@ -493,40 +493,40 @@
 - **Status**: Done
 - **Dependencies**: Write Backend Unit Tests for Services, Write Backend Unit Tests for Controllers
 
-##### 🟢 Write Backend Integration Tests for Database
+##### ✅ Write Backend Integration Tests for Database
 
 - **Assignee**: [TBD]
 - **Priority**: Medium
 - **Description**: Create integration tests for database operations and entity relationships.
 - **Acceptance Criteria**:
-  - [ ] Write integration tests for System entity (CRUD, validation)
-  - [ ] Write integration tests for Service entity (CRUD, relationships with System)
-  - [ ] Write integration tests for Contract entity (CRUD, JSONB fields)
-  - [ ] Write integration tests for ContractVersion entity (versioning, snapshots)
-  - [ ] Write integration tests for ServiceContractUsage entity (many-to-many relationships)
-  - [ ] Test database migrations (up/down)
-  - [ ] Test entity relationships and cascading operations
-  - [ ] Test database indexes and constraints
-  - [ ] Use test database with proper cleanup
+  - [x] Write integration tests for System entity (CRUD, validation)
+  - [x] Write integration tests for Service entity (CRUD, relationships with System)
+  - [x] Write integration tests for Contract entity (CRUD, JSONB fields)
+  - [x] Write integration tests for ContractVersion entity (versioning, snapshots)
+  - [x] Write integration tests for ServiceContractUsage entity (many-to-many relationships)
+  - [x] Test database migrations (up/down)
+  - [x] Test entity relationships and cascading operations
+  - [x] Test database indexes and constraints
+  - [x] Use test database with proper cleanup
 - **Related**: [Graph Storage Schema](./patterns/graph_storage_schema.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Configure Test Coverage Thresholds
 
-##### 🟢 Write Backend Integration Tests for Queue System
+##### ✅ Write Backend Integration Tests for Queue System
 
 - **Assignee**: [TBD]
 - **Priority**: Medium
 - **Description**: Create integration tests for BullMQ queue operations and job processing.
 - **Acceptance Criteria**:
-  - [ ] Write integration tests for queue job creation
-  - [ ] Write integration tests for queue job processing
-  - [ ] Write integration tests for queue job retry logic
-  - [ ] Write integration tests for queue job failure handling
-  - [ ] Test queue connection with Redis
-  - [ ] Test queue cleanup and job status tracking
-  - [ ] Use test Redis instance for isolation
+  - [x] Write integration tests for queue job creation
+  - [x] Write integration tests for queue job processing
+  - [x] Write integration tests for queue job retry logic
+  - [x] Write integration tests for queue job failure handling
+  - [x] Test queue connection with Redis
+  - [x] Test queue cleanup and job status tracking
+  - [x] Use test Redis instance for isolation
 - **Related**: [Architecture Design](./architecture_design.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Configure Test Coverage Thresholds
 
 ##### 🟢 Write Frontend Unit Tests for Components
@@ -600,41 +600,22 @@
 - **Status**: Ready
 - **Dependencies**: Write Frontend Unit Tests for Components, Write Frontend Unit Tests for Services
 
-##### 🟢 Setup Test Utilities and Helpers
+##### ✅ Setup Test Utilities and Helpers
 
 - **Assignee**: [TBD]
 - **Priority**: Medium
 - **Description**: Create reusable test utilities, mocks, and helpers for both backend and frontend.
 - **Acceptance Criteria**:
-  - [ ] Create backend test utilities (database helpers, mock factories)
-  - [ ] Create frontend test utilities (render helpers, mock providers)
-  - [ ] Create shared test data factories (entities, DTOs)
-  - [ ] Create mock implementations for external services (Redis, queues)
-  - [ ] Create API mock server setup (MSW or similar for frontend)
-  - [ ] Document test utilities usage
-  - [ ] Add examples in test files
+  - [x] Create backend test utilities (database helpers, mock factories)
+  - [x] Create frontend test utilities (render helpers, mock providers)
+  - [x] Create shared test data factories (entities, DTOs)
+  - [x] Create mock implementations for external services (Redis, queues)
+  - [x] Create API mock server setup (MSW or similar for frontend)
+  - [x] Document test utilities usage
+  - [x] Add examples in test files
 - **Related**: [Tech Stack](./tech_stack.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: None
-
-##### 🟢 Configure CI/CD Test Integration
-
-- **Assignee**: [TBD]
-- **Priority**: High
-- **Description**: Integrate test execution and coverage reporting into CI/CD pipeline.
-- **Acceptance Criteria**:
-  - [ ] Configure test execution in CI pipeline (GitHub Actions, GitLab CI, etc.)
-  - [ ] Run backend unit tests in CI
-  - [ ] Run backend E2E tests in CI
-  - [ ] Run frontend unit tests in CI
-  - [ ] Generate and upload coverage reports
-  - [ ] Set up coverage badges in README
-  - [ ] Configure test failure to block merges
-  - [ ] Add test result notifications
-  - [ ] Document CI test configuration
-- **Related**: [Tech Stack](./tech_stack.md)
-- **Status**: Ready
-- **Dependencies**: Configure Test Coverage Thresholds, Write Backend Unit Tests for Services, Write Frontend Unit Tests for Components
 
 ### Blocked Tasks
 
