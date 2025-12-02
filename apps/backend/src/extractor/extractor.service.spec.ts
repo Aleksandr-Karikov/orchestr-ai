@@ -1,12 +1,26 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ExtractorService } from './extractor.service';
+import { SpringBootParser } from './parsers/spring-boot/spring-boot.parser';
+import { Logger } from '../logger/logger.service';
 
 describe('ExtractorService', () => {
   let service: ExtractorService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ExtractorService],
+      providers: [
+        ExtractorService,
+        SpringBootParser,
+        {
+          provide: Logger,
+          useValue: {
+            error: jest.fn(),
+            warn: jest.fn(),
+            log: jest.fn(),
+            debug: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
     service = module.get<ExtractorService>(ExtractorService);

@@ -527,24 +527,24 @@
 
 #### Phase 1.2.2: Spring Boot Contract Extraction
 
-##### 🟢 Implement Spring Boot Annotation Parser
+##### ✅ Implement Spring Boot Annotation Parser
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Parse Spring Boot annotations to extract REST API contracts from controllers.
 - **Acceptance Criteria**:
-  - [ ] Install Java/Spring Boot parser library (JavaParser or similar)
-  - [ ] Parse @RestController and @Controller annotations
-  - [ ] Extract HTTP methods from @GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @PatchMapping
-  - [ ] Extract request paths from @RequestMapping and method-level annotations
-  - [ ] Parse @PathVariable, @RequestParam, @RequestBody annotations
-  - [ ] Extract request/response DTOs and generate JSON schemas
-  - [ ] Handle nested DTOs and complex types
-  - [ ] Support for @RequestHeader and @CookieValue
-  - [ ] Error logging with file and line number references
-  - [ ] Partial extraction on parse errors (continue with valid contracts)
+  - [x] Install Java/Spring Boot parser library (JavaParser or similar)
+  - [x] Parse @RestController and @Controller annotations
+  - [x] Extract HTTP methods from @GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @PatchMapping
+  - [x] Extract request paths from @RequestMapping and method-level annotations
+  - [x] Parse @PathVariable, @RequestParam, @RequestBody annotations
+  - [x] Extract request/response DTOs and generate JSON schemas
+  - [x] Handle nested DTOs and complex types
+  - [x] Support for @RequestHeader and @CookieValue
+  - [x] Error logging with file and line number references
+  - [x] Partial extraction on parse errors (continue with valid contracts)
 - **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [API Extraction Guide](./guides/api_extraction_guide.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Setup Git Repository Cloning Service
 
 #### Phase 1.2.3: OpenAPI/Swagger Parser
