@@ -80,6 +80,32 @@ pnpm test:e2e
 pnpm test:cov
 ```
 
+#### E2E Test Setup
+
+E2E tests use a separate test database (`orchestr_ai_test` by default) to avoid conflicts with development data. The test database is automatically cleaned up before each test.
+
+**Environment Variables for E2E Tests:**
+
+- `DB_DATABASE_TEST` - Test database name (default: `orchestr_ai_test`)
+- All other database connection variables are the same as development
+
+**E2E Test Files:**
+
+- `test/app.e2e-spec.ts` - Basic app controller tests ✅
+- `test/health.e2e-spec.ts` - Health check endpoint tests ✅
+- `test/systems.e2e-spec.ts` - System CRUD operations tests (skipped until controllers implemented)
+- `test/services.e2e-spec.ts` - Service CRUD operations with relationships tests (skipped until controllers implemented)
+- `test/contracts.e2e-spec.ts` - Contract CRUD operations and versioning tests (skipped until controllers implemented)
+- `test/indexer.e2e-spec.ts` - Indexing workflow tests (skipped until controllers implemented)
+- `test/error-handling.e2e-spec.ts` - Error handling tests (404, 400, 500) (skipped until controllers implemented)
+- `test/rate-limiting.e2e-spec.ts` - Rate limiting tests (skipped until controllers implemented)
+
+**Note:** Some E2E tests are currently skipped (`.skip`) because the controllers don't have endpoints implemented yet. Once you implement the controller endpoints (POST, GET, PUT, DELETE), remove `.skip` from the describe blocks to enable the tests.
+
+**Test Utilities:**
+
+- `test/test-setup.ts` - Test setup utilities for database cleanup and app creation
+
 #### Test Coverage Requirements
 
 The project maintains minimum test coverage thresholds of **70%** for:
