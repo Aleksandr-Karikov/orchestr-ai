@@ -10,7 +10,7 @@
 
 ## Current Sprint / Phase
 
-**Phase 1.1: Basic Infrastructure Setup**
+**Phase 1.2: Indexing and Contract Extraction**
 
 ### Active Tasks
 
@@ -430,49 +430,6 @@
 - **Status**: Done
 - **Dependencies**: None
 
-##### ✅ Write Backend Unit Tests for Services
-
-- **Assignee**: [TBD]
-- **Priority**: High
-- **Description**: Create comprehensive unit tests for all backend services with proper mocking.
-- **Acceptance Criteria**:
-  - [x] Write unit tests for `app.service.ts`
-  - [x] Write unit tests for `systems.service.ts` (CRUD operations, validation)
-  - [x] Write unit tests for `services.service.ts` (CRUD operations, relationships)
-  - [x] Write unit tests for `contracts.service.ts` (CRUD operations, versioning)
-  - [x] Write unit tests for `indexer.service.ts` (indexing logic, queue integration)
-  - [x] Write unit tests for `extractor.service.ts` (contract extraction logic)
-  - [x] Write unit tests for `analyzer.service.ts` (analysis logic, dependency detection)
-  - [x] Write unit tests for `visualization.service.ts` (graph building, filtering)
-  - [x] Write unit tests for `logger.service.ts` (logging methods, levels)
-  - [x] Mock all external dependencies (database, Redis, queues)
-  - [x] Achieve minimum 80% code coverage for all services
-- **Related**: [Architecture Design](./architecture_design.md), [Tech Stack](./tech_stack.md)
-- **Status**: Done
-- **Dependencies**: Configure Test Coverage Thresholds
-
-##### ✅ Write Backend Unit Tests for Controllers
-
-- **Assignee**: [TBD]
-- **Priority**: High
-- **Description**: Create unit tests for all REST API controllers with request/response validation.
-- **Acceptance Criteria**:
-  - [x] Write unit tests for `app.controller.ts`
-  - [x] Write unit tests for `systems.controller.ts` (GET, POST, PUT, DELETE endpoints)
-  - [x] Write unit tests for `services.controller.ts` (GET, POST, PUT, DELETE endpoints)
-  - [x] Write unit tests for `contracts.controller.ts` (GET, POST, PUT, DELETE endpoints)
-  - [x] Write unit tests for `indexer.controller.ts` (indexing endpoints, queue triggers)
-  - [x] Write unit tests for `extractor.controller.ts` (extraction endpoints)
-  - [x] Write unit tests for `analyzer.controller.ts` (analysis endpoints)
-  - [x] Write unit tests for `visualization.controller.ts` (graph endpoints, filtering)
-  - [x] Write unit tests for `health.controller.ts` (health check endpoints)
-  - [x] Test request validation (DTO validation, error responses)
-  - [x] Test rate limiting behavior
-  - [x] Achieve minimum 80% code coverage for all controllers
-- **Related**: [Architecture Design](./architecture_design.md), [Tech Stack](./tech_stack.md)
-- **Status**: Done
-- **Dependencies**: Configure Test Coverage Thresholds
-
 ##### ✅ Write Backend E2E Tests
 
 - **Assignee**: [TBD]
@@ -491,7 +448,7 @@
   - [x] Document E2E test setup and execution
 - **Related**: [Architecture Design](./architecture_design.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
 - **Status**: Done
-- **Dependencies**: Write Backend Unit Tests for Services, Write Backend Unit Tests for Controllers
+- **Dependencies**: Configure Test Coverage Thresholds
 
 ##### ✅ Write Backend Integration Tests for Database
 
@@ -529,77 +486,6 @@
 - **Status**: Done
 - **Dependencies**: Configure Test Coverage Thresholds
 
-##### 🟢 Write Frontend Unit Tests for Components
-
-- **Assignee**: [TBD]
-- **Priority**: High
-- **Description**: Create unit tests for React components using React Testing Library.
-- **Acceptance Criteria**:
-  - [ ] Write unit tests for `App.tsx` (routing, layout)
-  - [ ] Write unit tests for all page components (Systems, Services, Contracts, etc.)
-  - [ ] Write unit tests for all reusable components
-  - [ ] Test component rendering with different props
-  - [ ] Test user interactions (clicks, form submissions, navigation)
-  - [ ] Test component state changes
-  - [ ] Test error states and loading states
-  - [ ] Mock API calls and external dependencies
-  - [ ] Achieve minimum 80% code coverage for all components
-- **Related**: [Architecture Design](./architecture_design.md), [Tech Stack](./tech_stack.md)
-- **Status**: Ready
-- **Dependencies**: Configure Test Coverage Thresholds
-
-##### 🟢 Write Frontend Unit Tests for Hooks
-
-- **Assignee**: [TBD]
-- **Priority**: Medium
-- **Description**: Create unit tests for custom React hooks.
-- **Acceptance Criteria**:
-  - [ ] Write unit tests for all custom hooks in `src/hooks/`
-  - [ ] Test hook return values and state updates
-  - [ ] Test hook side effects
-  - [ ] Test hook error handling
-  - [ ] Use `@testing-library/react-hooks` or `renderHook` from React Testing Library
-  - [ ] Mock dependencies and context providers
-  - [ ] Achieve minimum 80% code coverage for all hooks
-- **Related**: [Tech Stack](./tech_stack.md)
-- **Status**: Ready
-- **Dependencies**: Configure Test Coverage Thresholds
-
-##### 🟢 Write Frontend Unit Tests for Services
-
-- **Assignee**: [TBD]
-- **Priority**: Medium
-- **Description**: Create unit tests for API client and service functions.
-- **Acceptance Criteria**:
-  - [ ] Write unit tests for API client (`src/services/api.ts`)
-  - [ ] Test HTTP request methods (GET, POST, PUT, DELETE)
-  - [ ] Test request/response interceptors
-  - [ ] Test error handling and retry logic
-  - [ ] Test authentication headers (if applicable)
-  - [ ] Mock axios and HTTP responses
-  - [ ] Achieve minimum 80% code coverage for all services
-- **Related**: [Tech Stack](./tech_stack.md)
-- **Status**: Ready
-- **Dependencies**: Configure Test Coverage Thresholds
-
-##### 🟢 Write Frontend Integration Tests
-
-- **Assignee**: [TBD]
-- **Priority**: Medium
-- **Description**: Create integration tests for critical user workflows.
-- **Acceptance Criteria**:
-  - [ ] Write integration tests for system creation workflow
-  - [ ] Write integration tests for service creation workflow
-  - [ ] Write integration tests for contract viewing workflow
-  - [ ] Write integration tests for graph visualization workflow
-  - [ ] Test complete user journeys (multiple steps)
-  - [ ] Mock API responses with MSW (Mock Service Worker) or similar
-  - [ ] Test navigation between pages
-  - [ ] Test form submissions and data persistence
-- **Related**: [Architecture Design](./architecture_design.md)
-- **Status**: Ready
-- **Dependencies**: Write Frontend Unit Tests for Components, Write Frontend Unit Tests for Services
-
 ##### ✅ Setup Test Utilities and Helpers
 
 - **Assignee**: [TBD]
@@ -617,6 +503,247 @@
 - **Status**: Done
 - **Dependencies**: None
 
+### Active Tasks
+
+#### Phase 1.2.1: Git Integration
+
+##### ✅ Setup Git Repository Cloning Service
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Create service for cloning Git repositories with authentication support and temporary directory management.
+- **Acceptance Criteria**:
+  - [x] Install Git client library (simple-git or nodegit)
+  - [x] Create GitService for repository cloning
+  - [x] Support authentication (SSH keys, HTTPS with tokens)
+  - [x] Implement temporary directory management
+  - [x] Add cleanup mechanism for temporary files
+  - [x] Error handling for cloning failures (invalid URL, authentication errors, network issues)
+  - [x] Support for different Git providers (GitHub, GitLab, Bitbucket)
+  - [x] Logging for cloning operations
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
+- **Status**: Done
+- **Dependencies**: Setup Structured Logging
+
+#### Phase 1.2.2: Spring Boot Contract Extraction
+
+##### 🟢 Implement Spring Boot Annotation Parser
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Parse Spring Boot annotations to extract REST API contracts from controllers.
+- **Acceptance Criteria**:
+  - [ ] Install Java/Spring Boot parser library (JavaParser or similar)
+  - [ ] Parse @RestController and @Controller annotations
+  - [ ] Extract HTTP methods from @GetMapping, @PostMapping, @PutMapping, @DeleteMapping, @PatchMapping
+  - [ ] Extract request paths from @RequestMapping and method-level annotations
+  - [ ] Parse @PathVariable, @RequestParam, @RequestBody annotations
+  - [ ] Extract request/response DTOs and generate JSON schemas
+  - [ ] Handle nested DTOs and complex types
+  - [ ] Support for @RequestHeader and @CookieValue
+  - [ ] Error logging with file and line number references
+  - [ ] Partial extraction on parse errors (continue with valid contracts)
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [API Extraction Guide](./guides/api_extraction_guide.md)
+- **Status**: Ready
+- **Dependencies**: Setup Git Repository Cloning Service
+
+#### Phase 1.2.3: OpenAPI/Swagger Parser
+
+##### 🟢 Implement OpenAPI/Swagger File Parser
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Parse OpenAPI/Swagger specification files to extract API contracts.
+- **Acceptance Criteria**:
+  - [ ] Install OpenAPI parser library (swagger-parser or openapi-types)
+  - [ ] Support OpenAPI 3.0 and 3.1 specifications
+  - [ ] Support Swagger 2.0 specifications
+  - [ ] Extract paths, methods, parameters, request/response schemas
+  - [ ] Handle $ref references in OpenAPI specs
+  - [ ] Merge with annotation-based extraction (prioritize OpenAPI if both exist)
+  - [ ] Support for multiple OpenAPI files in repository
+  - [ ] Error handling for invalid/malformed OpenAPI files
+  - [ ] Logging for parsing operations
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [API Extraction Guide](./guides/api_extraction_guide.md)
+- **Status**: Ready
+- **Dependencies**: Setup Git Repository Cloning Service
+
+#### Phase 1.2.4: Dependency Detection
+
+##### 🟢 Analyze HTTP Clients for Dependency Detection
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Detect dependencies between services by analyzing HTTP client usage in code.
+- **Acceptance Criteria**:
+  - [ ] Parse RestTemplate usage and extract service URLs
+  - [ ] Parse WebClient usage and extract service URLs
+  - [ ] Parse FeignClient annotations and extract service names
+  - [ ] Extract HTTP method and path from client calls
+  - [ ] Match client calls to contracts in database
+  - [ ] Confidence scoring based on detection method
+  - [ ] Store detection method and confidence in ServiceContractUsage entity
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Contract Analysis Rules](./patterns/contract_analysis_rules.md)
+- **Status**: Ready
+- **Dependencies**: Implement Spring Boot Annotation Parser
+
+##### 🟢 Parse Service Discovery Configuration
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Parse service discovery configuration files to identify service names and URLs.
+- **Acceptance Criteria**:
+  - [ ] Parse Eureka configuration (application.yml, application.properties)
+  - [ ] Parse Consul configuration
+  - [ ] Extract service names and base URLs
+  - [ ] Map service names to Service entities in database
+  - [ ] Use service discovery info for dependency matching
+  - [ ] Confidence scoring for service discovery-based detection
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Contract Analysis Rules](./patterns/contract_analysis_rules.md)
+- **Status**: Ready
+- **Dependencies**: Implement Spring Boot Annotation Parser
+
+##### 🟢 Implement URL Pattern Matching
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Match HTTP client URLs to contracts using pattern matching.
+- **Acceptance Criteria**:
+  - [ ] Extract URLs from HTTP client calls
+  - [ ] Normalize URLs (remove query params, handle path variables)
+  - [ ] Match URLs to contract paths using pattern matching
+  - [ ] Handle path variables and wildcards
+  - [ ] Confidence scoring for URL-based matching
+  - [ ] Store matches in ServiceContractUsage entity
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Contract Analysis Rules](./patterns/contract_analysis_rules.md)
+- **Status**: Ready
+- **Dependencies**: Analyze HTTP Clients for Dependency Detection
+
+#### Phase 1.2.5: Indexing Queue Processing
+
+##### 🟢 Implement BullMQ Job Processor for Indexing
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Create BullMQ job processor to handle asynchronous repository indexing.
+- **Acceptance Criteria**:
+  - [ ] Create IndexingProcessor class with @Processor decorator
+  - [ ] Implement job processing logic:
+    - Clone repository
+    - Extract contracts using Spring Boot parser
+    - Extract contracts using OpenAPI parser
+    - Detect dependencies
+    - Save contracts and dependencies to database
+  - [ ] Update Service indexing_status during processing
+  - [ ] Handle job failures with proper error logging
+  - [ ] Cleanup temporary files after processing
+  - [ ] Support for job retry mechanism
+  - [ ] Progress tracking for long-running jobs
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
+- **Status**: Ready
+- **Dependencies**: Setup Git Repository Cloning Service, Implement Spring Boot Annotation Parser, Implement OpenAPI/Swagger File Parser, Analyze HTTP Clients for Dependency Detection
+
+##### 🟢 Implement Indexing Status Tracking
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Track indexing status for services throughout the indexing process.
+- **Acceptance Criteria**:
+  - [ ] Update Service.indexing_status to PENDING when job is queued
+  - [ ] Update to IN_PROGRESS when job starts processing
+  - [ ] Update to COMPLETED when job succeeds
+  - [ ] Update to FAILED when job fails
+  - [ ] Update Service.last_indexed_at timestamp
+  - [ ] Store error messages in Service.metadata on failure
+  - [ ] Provide status query endpoints
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Graph Storage Schema](./patterns/graph_storage_schema.md)
+- **Status**: Ready
+- **Dependencies**: Implement BullMQ Job Processor for Indexing
+
+##### 🟢 Implement Job Retry and Error Handling
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Configure retry mechanism for failed indexing jobs with proper error handling.
+- **Acceptance Criteria**:
+  - [ ] Configure BullMQ retry options (max attempts, backoff strategy)
+  - [ ] Different retry strategies for different error types
+  - [ ] Log all errors with full context (service ID, repository URL, error details)
+  - [ ] Store error information in job data
+  - [ ] Handle transient errors (network issues) vs permanent errors (invalid repository)
+  - [ ] Implement exponential backoff for retries
+  - [ ] Set maximum retry attempts
+  - [ ] Mark job as failed after max retries
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
+- **Status**: Ready
+- **Dependencies**: Implement BullMQ Job Processor for Indexing
+
+##### 🟢 Implement Parallel Processing Support
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Support parallel processing of multiple services for efficient indexing.
+- **Acceptance Criteria**:
+  - [ ] Configure BullMQ concurrency settings
+  - [ ] Process multiple services in parallel
+  - [ ] Limit concurrent jobs to prevent resource exhaustion
+  - [ ] Monitor queue length and processing time
+  - [ ] Handle queue backpressure
+  - [ ] Support for priority queues (high priority for manual triggers)
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
+- **Status**: Ready
+- **Dependencies**: Implement BullMQ Job Processor for Indexing
+
+#### Phase 1.2.6: Indexing API
+
+##### 🟢 Create Indexing Trigger Endpoints
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Create REST API endpoints for triggering indexing operations.
+- **Acceptance Criteria**:
+  - [ ] POST /api/indexer/services/:serviceId/trigger - Trigger indexing for a service
+  - [ ] POST /api/indexer/systems/:systemId/trigger - Trigger indexing for all services in a system
+  - [ ] Validate service/system exists before queuing
+  - [ ] Return job ID and status immediately
+  - [ ] Apply rate limiting to indexing endpoints
+  - [ ] Error handling for invalid requests
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Architecture Design](./architecture_design.md)
+- **Status**: Ready
+- **Dependencies**: Implement BullMQ Job Processor for Indexing
+
+##### 🟢 Create Indexing Status Endpoints
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Create API endpoints for checking indexing status and job information.
+- **Acceptance Criteria**:
+  - [ ] GET /api/indexer/services/:serviceId/status - Get indexing status for a service
+  - [ ] GET /api/indexer/jobs/:jobId - Get job details by ID
+  - [ ] GET /api/indexer/jobs - List recent indexing jobs
+  - [ ] Return indexing status, progress, error messages
+  - [ ] Include job metadata (start time, duration, etc.)
+  - [ ] Support filtering and pagination for job list
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Architecture Design](./architecture_design.md)
+- **Status**: Ready
+- **Dependencies**: Implement Indexing Status Tracking
+
+##### 🟢 Create Indexing Management Endpoints
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Create API endpoints for managing indexing jobs (cancel, retry, etc.).
+- **Acceptance Criteria**:
+  - [ ] DELETE /api/indexer/jobs/:jobId - Cancel a running job
+  - [ ] POST /api/indexer/jobs/:jobId/retry - Retry a failed job
+  - [ ] GET /api/indexer/queue/stats - Get queue statistics
+  - [ ] Validate job state before operations
+  - [ ] Error handling for invalid operations
+  - [ ] Logging for management operations
+- **Related**: [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md), [Architecture Design](./architecture_design.md)
+- **Status**: Ready
+- **Dependencies**: Implement BullMQ Job Processor for Indexing
+
 ### Blocked Tasks
 
 _No blocked tasks at this time._
@@ -626,10 +753,6 @@ _No blocked tasks at this time._
 _No completed tasks yet._
 
 ## Backlog
-
-### Phase 1.2: Indexing and Contract Extraction
-
-_These tasks will be added after Phase 1.1 is complete. See [MVP Spec Phase 1.2](./specs/mvp_spec_phase_1.md) for details._
 
 ### Phase 1.3: Visualization and UI
 
