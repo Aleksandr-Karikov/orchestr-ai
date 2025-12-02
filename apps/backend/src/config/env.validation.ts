@@ -54,8 +54,8 @@ class EnvironmentVariables {
   DB_USERNAME!: string;
 
   @IsString()
-  @IsNotEmpty()
-  DB_PASSWORD!: string;
+  @IsOptional()
+  DB_PASSWORD?: string;
 
   @IsString()
   @IsNotEmpty()

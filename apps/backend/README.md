@@ -121,7 +121,28 @@ Each module follows NestJS conventions with:
 - `*.controller.ts` - HTTP endpoints
 - `*.service.ts` - Business logic
 - `dto/` - Data Transfer Objects (to be added)
-- `entities/` - TypeORM entities (to be added)
+- `entities/` - MikroORM entities
+
+### Database Migrations
+
+The project uses MikroORM for database management. Migrations are configured in `src/database/mikro-orm.config.ts`.
+
+```bash
+# Run pending migrations
+pnpm db:migrate
+
+# Create a new migration
+pnpm db:migrate:generate
+
+# Revert last migration
+pnpm db:migrate:revert
+
+# List all migrations
+pnpm db:migrate:show
+
+# Create blank migration
+pnpm db:migrate:create
+```
 
 ## Related Documentation
 

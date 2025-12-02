@@ -46,8 +46,10 @@
 - **Primary DB**: PostgreSQL 15+
   - Reliable relational database, JSON field support for storing contract schemas
   - Schema: See [Graph Storage Schema](./patterns/graph_storage_schema.md)
-- **ORM**: TypeORM 0.3+
+- **ORM**: MikroORM 6+
   - Migrations, typed queries, PostgreSQL JSON support
+  - Identity Map and Unit of Work patterns
+  - Single configuration file for app and CLI
 - **Queue System**: Redis + BullMQ
   - Asynchronous job processing for repository indexing
   - Task queues for contract extraction

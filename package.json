@@ -17,7 +17,12 @@
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "db:migrate": "turbo run db:migrate --filter=backend",
     "db:migrate:generate": "turbo run db:migrate:generate --filter=backend",
-    "db:migrate:revert": "turbo run db:migrate:revert --filter=backend"
+    "db:migrate:revert": "turbo run db:migrate:revert --filter=backend",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "docker:restart": "docker-compose restart",
+    "docker:clean": "docker-compose down -v"
   },
   "devDependencies": {
     "prettier": "^3.3.3",

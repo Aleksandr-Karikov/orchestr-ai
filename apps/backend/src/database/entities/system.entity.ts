@@ -1,32 +1,30 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
-  UpdateDateColumn,
+  PrimaryKey,
+  Property,
   OneToMany,
   Index,
-} from 'typeorm';
-import { Service } from './service.entity';
+} from "@mikro-orm/core";
+import { Service } from "./service.entity";
 
-@Entity('systems')
+@Entity({ tableName: "systems" })
+@Index({ properties: ["name"] })
 export class System {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryKey({ type: "uuid", defaultRaw: "gen_random_uuid()" })
   id!: string;
 
-  @Column({ type: 'varchar', length: 255 })
-  @Index()
+  @Property({ type: "varchar", length: 255 })
   name!: string;
 
-  @Column({ type: 'text', nullable: true })
+  @Property({ type: "text", nullable: true })
   description?: string;
 
-  @CreateDateColumn({ type: 'timestamp' })
+  @Property({ type: "timestamp", onCreate: () => new Date() })
   created_at!: Date;
 
-  @UpdateDateColumn({ type: 'timestamp' })
+  @Property({ type: "timestamp", onUpdate: () => new Date() })
   updated_at!: Date;
 
   @OneToMany(() => Service, (service) => service.system)
-  services!: Service[];
+  services = new Array<Service>();
 }

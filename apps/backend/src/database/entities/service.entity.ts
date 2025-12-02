@@ -1,56 +1,51 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
-  Column,
+  PrimaryKey,
+  Property,
   ManyToOne,
   OneToMany,
-  JoinColumn,
   Index,
-} from 'typeorm';
-import { System } from './system.entity';
-import { Contract } from './contract.entity';
-import { ServiceContractUsage } from './service-contract-usage.entity';
-import { IndexingStatus } from './indexing-status.enum';
+  Enum,
+} from "@mikro-orm/core";
+import { System } from "./system.entity";
+import { Contract } from "./contract.entity";
+import { ServiceContractUsage } from "./service-contract-usage.entity";
+import { IndexingStatus } from "./indexing-status.enum";
 
-@Entity('services')
+@Entity({ tableName: "services" })
+@Index({ properties: ["system"] })
+@Index({ properties: ["repository_url"] })
 export class Service {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryKey({ type: "uuid", defaultRaw: "gen_random_uuid()" })
   id!: string;
 
-  @Column({ type: 'uuid' })
-  @Index()
-  system_id!: string;
-
-  @ManyToOne(() => System, (system) => system.services, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'system_id' })
+  @ManyToOne(() => System, {
+    deleteRule: "cascade",
+    fieldName: "system_id",
+  })
   system!: System;
 
-  @Column({ type: 'varchar', length: 255 })
+  @Property({ type: "varchar", length: 255 })
   name!: string;
 
-  @Column({ type: 'varchar', length: 500 })
-  @Index()
+  @Property({ type: "varchar", length: 500 })
   repository_url!: string;
 
-  @Column({ type: 'varchar', length: 500, nullable: true })
+  @Property({ type: "varchar", length: 500, nullable: true })
   repository_path?: string;
 
-  @Column({ type: 'timestamp', nullable: true })
+  @Property({ type: "timestamp", nullable: true })
   last_indexed_at?: Date;
 
-  @Column({
-    type: 'enum',
-    enum: IndexingStatus,
-    default: IndexingStatus.PENDING,
-  })
-  indexing_status!: IndexingStatus;
+  @Enum(() => IndexingStatus)
+  indexing_status: IndexingStatus = IndexingStatus.PENDING;
 
-  @Column({ type: 'jsonb', nullable: true })
+  @Property({ type: "jsonb", nullable: true })
   metadata?: Record<string, unknown>;
 
   @OneToMany(() => Contract, (contract) => contract.service)
-  contracts!: Contract[];
+  contracts = new Array<Contract>();
 
   @OneToMany(() => ServiceContractUsage, (usage) => usage.consumerService)
-  contractUsages!: ServiceContractUsage[];
+  contractUsages = new Array<ServiceContractUsage>();
 }

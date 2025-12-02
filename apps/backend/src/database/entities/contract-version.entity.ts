@@ -1,46 +1,41 @@
 import {
   Entity,
-  PrimaryGeneratedColumn,
-  Column,
-  CreateDateColumn,
+  PrimaryKey,
+  Property,
   ManyToOne,
-  JoinColumn,
   Index,
-} from "typeorm";
+} from "@mikro-orm/core";
 import { Contract } from "./contract.entity";
 
-@Entity("contract_versions")
+@Entity({ tableName: "contract_versions" })
+@Index({ properties: ["contract"] })
+@Index({ properties: ["contract", "version"] })
+@Index({ properties: ["is_current"] })
 export class ContractVersion {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryKey({ type: "uuid", defaultRaw: "gen_random_uuid()" })
   id!: string;
 
-  @Column({ type: "uuid" })
-  @Index()
-  contract_id!: string;
-
-  @ManyToOne(() => Contract, (contract) => contract.versions, {
-    onDelete: "CASCADE",
+  @ManyToOne(() => Contract, {
+    deleteRule: "cascade",
+    fieldName: "contract_id",
   })
-  @JoinColumn({ name: "contract_id" })
   contract!: Contract;
 
-  @Column({ type: "integer" })
-  @Index(["contract_id", "version"])
+  @Property({ type: "integer" })
   version!: number;
 
-  @Column({ type: "jsonb" })
+  @Property({ type: "jsonb" })
   snapshot!: Record<string, unknown>;
 
-  @Column({ type: "text", nullable: true })
+  @Property({ type: "text", nullable: true })
   change_summary?: string;
 
-  @Column({ type: "boolean", default: false })
-  @Index()
-  is_current!: boolean;
+  @Property({ type: "boolean", default: false })
+  is_current: boolean = false;
 
-  @CreateDateColumn({ type: "timestamp" })
+  @Property({ type: "timestamp", onCreate: () => new Date() })
   created_at!: Date;
 
-  @Column({ type: "varchar", length: 255, nullable: true })
+  @Property({ type: "varchar", length: 255, nullable: true })
   created_by?: string;
 }
