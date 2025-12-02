@@ -451,26 +451,26 @@
 - **Status**: Done
 - **Dependencies**: Configure Test Coverage Thresholds
 
-##### 🟢 Write Backend Unit Tests for Controllers
+##### ✅ Write Backend Unit Tests for Controllers
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Create unit tests for all REST API controllers with request/response validation.
 - **Acceptance Criteria**:
-  - [ ] Write unit tests for `app.controller.ts`
-  - [ ] Write unit tests for `systems.controller.ts` (GET, POST, PUT, DELETE endpoints)
-  - [ ] Write unit tests for `services.controller.ts` (GET, POST, PUT, DELETE endpoints)
-  - [ ] Write unit tests for `contracts.controller.ts` (GET, POST, PUT, DELETE endpoints)
-  - [ ] Write unit tests for `indexer.controller.ts` (indexing endpoints, queue triggers)
-  - [ ] Write unit tests for `extractor.controller.ts` (extraction endpoints)
-  - [ ] Write unit tests for `analyzer.controller.ts` (analysis endpoints)
-  - [ ] Write unit tests for `visualization.controller.ts` (graph endpoints, filtering)
-  - [ ] Write unit tests for `health.controller.ts` (health check endpoints)
-  - [ ] Test request validation (DTO validation, error responses)
-  - [ ] Test rate limiting behavior
-  - [ ] Achieve minimum 80% code coverage for all controllers
+  - [x] Write unit tests for `app.controller.ts`
+  - [x] Write unit tests for `systems.controller.ts` (GET, POST, PUT, DELETE endpoints)
+  - [x] Write unit tests for `services.controller.ts` (GET, POST, PUT, DELETE endpoints)
+  - [x] Write unit tests for `contracts.controller.ts` (GET, POST, PUT, DELETE endpoints)
+  - [x] Write unit tests for `indexer.controller.ts` (indexing endpoints, queue triggers)
+  - [x] Write unit tests for `extractor.controller.ts` (extraction endpoints)
+  - [x] Write unit tests for `analyzer.controller.ts` (analysis endpoints)
+  - [x] Write unit tests for `visualization.controller.ts` (graph endpoints, filtering)
+  - [x] Write unit tests for `health.controller.ts` (health check endpoints)
+  - [x] Test request validation (DTO validation, error responses)
+  - [x] Test rate limiting behavior
+  - [x] Achieve minimum 80% code coverage for all controllers
 - **Related**: [Architecture Design](./architecture_design.md), [Tech Stack](./tech_stack.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Configure Test Coverage Thresholds
 
 ##### 🟢 Write Backend E2E Tests
