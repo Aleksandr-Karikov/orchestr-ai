@@ -1,0 +1,43 @@
+{
+  "name": "@orchestr-ai/config",
+  "version": "0.1.0",
+  "description": "Shared ESLint, TypeScript, and Prettier configurations for Orchestr-AI",
+  "main": "index.js",
+  "files": [
+    "eslint",
+    "typescript",
+    "prettier"
+  ],
+  "type": "module",
+  "exports": {
+    "./eslint": "./eslint/index.js",
+    "./eslint/base": "./eslint/base.js",
+    "./eslint/nestjs": "./eslint/nestjs.js",
+    "./eslint/react": "./eslint/react.js",
+    "./typescript/base": "./typescript/base.json",
+    "./typescript/nestjs": "./typescript/nestjs.json",
+    "./typescript/react": "./typescript/react.json",
+    "./prettier": "./prettier/index.js"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0"
+  },
+  "dependencies": {
+    "@eslint/js": "^9.17.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.2",
+    "@typescript-eslint/parser": "^8.18.2",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.16",
+    "globals": "^15.12.0",
+    "prettier": "^3.3.3",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.18.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
+

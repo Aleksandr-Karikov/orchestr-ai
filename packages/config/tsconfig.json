@@ -1,0 +1,11 @@
+{
+  "extends": "./typescript/base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": ".",
+    "noEmit": true
+  },
+  "include": ["**/*.js", "**/*.mjs"],
+  "exclude": ["node_modules", "dist"]
+}
+
