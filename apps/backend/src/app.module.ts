@@ -1,9 +1,14 @@
 import { Module } from "@nestjs/common";
+import { APP_FILTER } from "@nestjs/core";
 import { ConfigModule } from "@nestjs/config";
 import { validate } from "./config/env.validation";
 import { DatabaseModule } from "./database/database.module";
 import { RedisModule } from "./redis/redis.module";
 import { QueueModule } from "./queue/queue.module";
+import { LoggerModule } from "./logger/logger.module";
+import { HealthModule } from "./health/health.module";
+import { ThrottlerConfigModule } from "./throttler/throttler.module";
+import { HttpExceptionFilter } from "./common/filters/http-exception.filter";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { SystemsModule } from "./systems/systems.module";
@@ -22,9 +27,12 @@ import { VisualizationModule } from "./visualization/visualization.module";
       validate,
       cache: true,
     }),
+    LoggerModule,
+    ThrottlerConfigModule,
     DatabaseModule,
     RedisModule,
     QueueModule,
+    HealthModule,
     SystemsModule,
     ServicesModule,
     ContractsModule,
@@ -34,6 +42,12 @@ import { VisualizationModule } from "./visualization/visualization.module";
     VisualizationModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_FILTER,
+      useClass: HttpExceptionFilter,
+    },
+  ],
 })
 export class AppModule {}

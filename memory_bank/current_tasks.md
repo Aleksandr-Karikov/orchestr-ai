@@ -339,77 +339,77 @@
 
 #### Phase 1.1.8: Backend Core Features
 
-##### 🟢 Setup Structured Logging
+##### ✅ Setup Structured Logging
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Configure structured JSON logging (Winston or Pino) with proper log levels and context.
 - **Acceptance Criteria**:
-  - [ ] Install logging library (Winston or Pino)
-  - [ ] Create logger service/module
-  - [ ] Configure JSON format for logs
-  - [ ] Set up log levels (Error, Warn, Info, Debug) from environment
-  - [ ] Add request ID tracking middleware
-  - [ ] Configure log output (console, file)
-  - [ ] Add context logging (service name, file, line number)
-  - [ ] Integrate with NestJS logging system
+  - [x] Install logging library (Winston or Pino)
+  - [x] Create logger service/module
+  - [x] Configure JSON format for logs
+  - [x] Set up log levels (Error, Warn, Info, Debug) from environment
+  - [x] Add request ID tracking middleware
+  - [x] Configure log output (console, file)
+  - [x] Add context logging (service name, file, line number)
+  - [x] Integrate with NestJS logging system
 - **Related**: [Tech Stack](./tech_stack.md), [Architecture Design](./architecture_design.md), [MVP Spec Phase 1.1](./specs/mvp_spec_phase_1.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Setup Backend Module Structure
 
-##### 🟢 Create Health Check Endpoint
+##### ✅ Create Health Check Endpoint
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Create `/health` endpoint that returns service status including database and Redis connectivity.
 - **Acceptance Criteria**:
-  - [ ] Install `@nestjs/terminus` package (recommended) or create custom endpoint
-  - [ ] Create health check controller
-  - [ ] Add database connectivity check
-  - [ ] Add Redis connectivity check
-  - [ ] Return status: `{ status: 'ok' | 'error', database: 'up' | 'down', redis: 'up' | 'down' }`
-  - [ ] Configure proper HTTP status codes (200 for healthy, 503 for unhealthy)
-  - [ ] Test health check endpoint
+  - [x] Install `@nestjs/terminus` package (recommended) or create custom endpoint
+  - [x] Create health check controller
+  - [x] Add database connectivity check
+  - [x] Add Redis connectivity check
+  - [x] Return status: `{ status: 'ok' | 'error', database: 'up' | 'down', redis: 'up' | 'down' }`
+  - [x] Configure proper HTTP status codes (200 for healthy, 503 for unhealthy)
+  - [x] Test health check endpoint
 - **Related**: [Architecture Design](./architecture_design.md), [MVP Spec Phase 1.1](./specs/mvp_spec_phase_1.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Setup TypeORM and PostgreSQL Connection, Setup Redis Configuration
 
-##### 🟢 Configure API Rate Limiting
+##### ✅ Configure API Rate Limiting
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Set up rate limiting for REST API endpoints using NestJS Throttler module.
 - **Acceptance Criteria**:
-  - [ ] Install `@nestjs/throttler` package
-  - [ ] Configure ThrottlerModule with different limits for:
+  - [x] Install `@nestjs/throttler` package
+  - [x] Configure ThrottlerModule with different limits for:
     - Indexing operations (low limit)
     - Graph visualization (high limit)
     - Contract editing (medium limit)
     - Default limit for other endpoints
-  - [ ] Apply throttler guards globally or per-controller
-  - [ ] Configure proper error responses (429 Too Many Requests)
-  - [ ] Add retry-after header in error responses
-  - [ ] Test rate limiting works correctly
+  - [x] Apply throttler guards globally or per-controller
+  - [x] Configure proper error responses (429 Too Many Requests)
+  - [x] Add retry-after header in error responses
+  - [x] Test rate limiting works correctly
 - **Related**: [Architecture Design](./architecture_design.md), [Tech Stack](./tech_stack.md), [MVP Spec Phase 1.1](./specs/mvp_spec_phase_1.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Setup Backend Module Structure
 
-##### 🟢 Setup Basic Error Handling
+##### ✅ Setup Basic Error Handling
 
 - **Assignee**: [TBD]
 - **Priority**: Medium
 - **Description**: Implement global exception filter and error handling middleware for consistent error responses.
 - **Acceptance Criteria**:
-  - [ ] Create global exception filter
-  - [ ] Handle common exceptions (ValidationException, NotFoundException, etc.)
-  - [ ] Format error responses consistently
-  - [ ] Include error context in logs
-  - [ ] Handle database errors gracefully
-  - [ ] Handle Redis/queue errors gracefully
-  - [ ] Return appropriate HTTP status codes
-  - [ ] Test error handling with various scenarios
+  - [x] Create global exception filter
+  - [x] Handle common exceptions (ValidationException, NotFoundException, etc.)
+  - [x] Format error responses consistently
+  - [x] Include error context in logs
+  - [x] Handle database errors gracefully
+  - [x] Handle Redis/queue errors gracefully
+  - [x] Return appropriate HTTP status codes
+  - [x] Test error handling with various scenarios
 - **Related**: [Architecture Design](./architecture_design.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Setup Structured Logging
 
 ### Blocked Tasks
