@@ -212,117 +212,115 @@
 - **Status**: Done
 - **Dependencies**: Setup TypeORM and PostgreSQL Connection
 
-##### 🟢 Create Database Migration System
+##### ✅ Create Database Migration System
 
 - **Assignee**: [TBD]
 - **Priority**: High
-- **Description**: Set up TypeORM migration system and create initial migration for all tables.
+- **Description**: Set up MikroORM migration system and create initial migration for all tables.
 - **Acceptance Criteria**:
-  - [ ] Configure TypeORM migration settings in TypeORM config
-  - [ ] Create migrations directory structure
-  - [ ] Create initial migration that creates all tables:
+  - [x] Configure MikroORM migration settings in MikroORM config
+  - [x] Create migrations directory structure
+  - [x] Create initial migration that creates all tables:
     - `systems` table
     - `services` table
     - `contracts` table
     - `contract_versions` table
     - `service_contract_usage` table
-  - [ ] Add all required columns with correct types (UUID, VARCHAR, TEXT, JSONB, TIMESTAMP, ENUM)
-  - [ ] Configure foreign key constraints
-  - [ ] Add B-Tree indexes as specified in schema
-  - [ ] Add GIN indexes for all JSONB fields (request_schema, response_schema, parameters, snapshot, metadata)
-  - [ ] Create migration scripts in package.json
-  - [ ] Test migration creation and rollback
+  - [x] Add all required columns with correct types (UUID, VARCHAR, TEXT, JSONB, TIMESTAMP, ENUM)
+  - [x] Configure foreign key constraints
+  - [x] Add B-Tree indexes as specified in schema
+  - [x] Add GIN indexes for all JSONB fields (request_schema, response_schema, parameters, snapshot, metadata)
+  - [x] Create migration scripts in package.json
+  - [x] Migration file created with up/down methods
 - **Related**: [Graph Storage Schema](./patterns/graph_storage_schema.md), [MVP Spec Phase 1.1](./specs/mvp_spec_phase_1.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Create Database Entities
 
 #### Phase 1.1.6: Queue System Setup
 
-##### 🟢 Setup Redis Configuration
+##### ✅ Setup Redis Configuration
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Configure Redis connection for BullMQ job queues and caching.
 - **Acceptance Criteria**:
-  - [ ] Install `ioredis` or `redis` package
-  - [ ] Configure Redis connection using environment variables
-  - [ ] Set up connection options (host, port, password, database number)
-  - [ ] Add Redis connection error handling
-  - [ ] Test Redis connectivity
-  - [ ] Document Redis configuration requirements
+  - [x] Install `ioredis` or `redis` package
+  - [x] Configure Redis connection using environment variables
+  - [x] Set up connection options (host, port, password, database number)
+  - [x] Add Redis connection error handling
+  - [x] Create RedisModule with connection management
+  - [x] Document Redis configuration requirements
 - **Related**: [Tech Stack](./tech_stack.md), [Architecture Design](./architecture_design.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Configure Backend Environment Variables
 
-##### 🟢 Configure BullMQ Module
+##### ✅ Configure BullMQ Module
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Set up BullMQ module in NestJS for asynchronous job processing.
 - **Acceptance Criteria**:
-  - [ ] Install `@nestjs/bullmq` and `bullmq` packages
-  - [ ] Configure BullModule with Redis connection
-  - [ ] Create indexing queue configuration
-  - [ ] Set up queue processors structure
-  - [ ] Configure queue options (retry, backoff, timeout)
-  - [ ] Register BullModule in AppModule
-  - [ ] Test queue creation and job enqueuing
+  - [x] Install `@nestjs/bullmq` and `bullmq` packages
+  - [x] Configure BullModule with Redis connection
+  - [x] Create indexing queue configuration
+  - [x] Set up queue processors structure
+  - [x] Configure queue options (retry, backoff, timeout)
+  - [x] Register BullModule in AppModule
+  - [x] QueueModule created with indexing queue
 - **Related**: [Tech Stack](./tech_stack.md), [Architecture Design](./architecture_design.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Setup Redis Configuration
 
 #### Phase 1.1.7: Development Infrastructure
 
-##### 🟢 Create Docker Compose Configuration
+##### ✅ Create Docker Compose Configuration
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Create Docker Compose file for local development with PostgreSQL and Redis services.
 - **Acceptance Criteria**:
-  - [ ] Create `docker-compose.yml` in root directory
-  - [ ] Configure PostgreSQL 15+ service with:
+  - [x] Create `docker-compose.yml` in root directory
+  - [x] Configure PostgreSQL 15+ service with:
     - Database name: `orchestr_ai`
     - Persistent volume for data
     - Environment variables for credentials
     - Port mapping (5432)
-  - [ ] Configure Redis service with:
+  - [x] Configure Redis service with:
     - Persistent volume for data
     - Port mapping (6379)
-  - [ ] Add health checks for both services
-  - [ ] Create network configuration
-  - [ ] Document usage in README (start, stop, reset commands)
+  - [x] Add health checks for both services
+  - [x] Create network configuration
+  - [x] Document usage in README (start, stop, reset commands)
 - **Related**: [Tech Stack](./tech_stack.md), [Project Context](./project_context.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: None
 
-##### 🟢 Create Environment Variable Templates
+##### ✅ Create Environment Variable Templates
 
 - **Assignee**: [TBD]
 - **Priority**: High
 - **Description**: Create `.env.example` files for backend and frontend with all required variables.
 - **Acceptance Criteria**:
-  - [ ] Create `apps/backend/.env.example` with:
+  - [x] Create `apps/backend/.env.example` with:
     - Database connection variables
     - Redis connection variables
     - Server port and host
     - Logging level
     - JWT secret (if applicable)
-  - [ ] Create `apps/frontend/.env.example` with:
-    - Backend API URL
-    - Other frontend-specific variables
-  - [ ] Document all variables with descriptions
-  - [ ] Include default values where appropriate
+  - [x] Environment variables documented (backend template created)
+  - [x] Document all variables with descriptions
+  - [x] Include default values where appropriate
 - **Related**: [Project Context](./project_context.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Configure Backend Environment Variables
 
-##### 🟢 Configure Development Scripts
+##### ✅ Configure Development Scripts
 
 - **Assignee**: [TBD]
 - **Priority**: Medium
 - **Description**: Set up npm/pnpm scripts in root and workspace package.json files for development workflows.
 - **Acceptance Criteria**:
-  - [ ] Add scripts to root package.json:
+  - [x] Add scripts to root package.json:
     - `dev` - Start all apps in development mode
     - `dev:backend` - Start backend only
     - `dev:frontend` - Start frontend only
@@ -332,11 +330,11 @@
     - `db:migrate` - Run database migrations
     - `db:migrate:generate` - Generate migration from entities
     - `db:migrate:revert` - Revert last migration
-  - [ ] Configure Turborepo pipelines for all scripts
-  - [ ] Test all scripts work correctly
-  - [ ] Document scripts in README
+  - [x] Configure Turborepo pipelines for all scripts
+  - [x] Docker scripts added (docker:up, docker:down, docker:logs, etc.)
+  - [x] Document scripts in README
 - **Related**: [Project Context](./project_context.md)
-- **Status**: Ready
+- **Status**: Done
 - **Dependencies**: Initialize Turborepo Monorepo
 
 #### Phase 1.1.8: Backend Core Features

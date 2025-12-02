@@ -55,10 +55,33 @@ cp apps/frontend/.env.example apps/frontend/.env
 Using Docker Compose (recommended):
 
 ```bash
+# Start services
+pnpm docker:up
+# or
 docker-compose up -d
+
+# View logs
+pnpm docker:logs
+# or
+docker-compose logs -f
+
+# Stop services
+pnpm docker:down
+# or
+docker-compose down
+
+# Restart services
+pnpm docker:restart
+# or
+docker-compose restart
+
+# Stop and remove volumes (reset)
+pnpm docker:clean
+# or
+docker-compose down -v
 ```
 
-This will start PostgreSQL and Redis services.
+This will start PostgreSQL and Redis services with persistent volumes and health checks.
 
 ### 4. Run Database Migrations
 
@@ -96,6 +119,11 @@ pnpm dev:frontend
 - `pnpm db:migrate` - Run database migrations
 - `pnpm db:migrate:generate` - Generate migration from entities
 - `pnpm db:migrate:revert` - Revert last migration
+- `pnpm docker:up` - Start Docker services (PostgreSQL and Redis)
+- `pnpm docker:down` - Stop Docker services
+- `pnpm docker:logs` - View Docker service logs
+- `pnpm docker:restart` - Restart Docker services
+- `pnpm docker:clean` - Stop services and remove volumes (reset)
 
 ## Documentation
 
@@ -109,4 +137,3 @@ For detailed documentation, see the [memory_bank](./memory_bank/README.md) direc
 ## License
 
 [To be determined]
-

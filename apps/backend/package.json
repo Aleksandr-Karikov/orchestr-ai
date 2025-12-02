@@ -19,11 +19,19 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "db:migrate": "ts-node -r dotenv/config node_modules/.bin/mikro-orm migration:up -c src/database/mikro-orm.config.ts",
-    "db:migrate:generate": "ts-node -r dotenv/config node_modules/.bin/mikro-orm migration:create -c src/database/mikro-orm.config.ts",
-    "db:migrate:revert": "ts-node -r dotenv/config node_modules/.bin/mikro-orm migration:down -c src/database/mikro-orm.config.ts",
-    "db:migrate:show": "ts-node -r dotenv/config node_modules/.bin/mikro-orm migration:list -c src/database/mikro-orm.config.ts",
-    "db:migrate:create": "ts-node -r dotenv/config node_modules/.bin/mikro-orm migration:create --blank -c src/database/mikro-orm.config.ts"
+    "db:migrate": "NODE_OPTIONS='-r dotenv/config' pnpm exec mikro-orm migration:up",
+    "db:migrate:generate": "NODE_OPTIONS='-r dotenv/config' pnpm exec mikro-orm migration:create",
+    "db:migrate:revert": "NODE_OPTIONS='-r dotenv/config' pnpm exec mikro-orm migration:down",
+    "db:migrate:show": "NODE_OPTIONS='-r dotenv/config' pnpm exec mikro-orm migration:list",
+    "db:migrate:pending": "NODE_OPTIONS='-r dotenv/config' pnpm exec mikro-orm migration:pending",
+    "db:migrate:check": "NODE_OPTIONS='-r dotenv/config' pnpm exec mikro-orm migration:check"
+  },
+  "mikro-orm": {
+    "useTsNode": true,
+    "configPaths": [
+      "./src/database/mikro-orm.config.ts",
+      "./dist/database/mikro-orm.config.js"
+    ]
   },
   "dependencies": {
     "@mikro-orm/core": "^6.6.1",
@@ -47,6 +55,7 @@
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^6.6.1",
     "@nestjs/cli": "^10.4.8",
     "@nestjs/schematics": "^10.1.1",
     "@nestjs/testing": "^10.4.20",
