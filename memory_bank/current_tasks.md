@@ -412,6 +412,230 @@
 - **Status**: Done
 - **Dependencies**: Setup Structured Logging
 
+#### Phase 1.1.9: Test Coverage and Quality Assurance
+
+##### ✅ Configure Test Coverage Thresholds
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Set up test coverage thresholds and reporting for both backend and frontend applications.
+- **Acceptance Criteria**:
+  - [x] Configure Jest coverage thresholds in backend (minimum 70% for statements, branches, functions, lines)
+  - [x] Configure Vitest coverage thresholds in frontend (minimum 70% for statements, branches, functions, lines)
+  - [x] Set up coverage reporting format (HTML, JSON, LCOV)
+  - [x] Configure coverage exclusions (test files, migrations, config files)
+  - [x] Add coverage scripts to package.json files
+  - [x] Document coverage requirements in README
+- **Related**: [Tech Stack](./tech_stack.md)
+- **Status**: Done
+- **Dependencies**: None
+
+##### 🟢 Write Backend Unit Tests for Services
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Create comprehensive unit tests for all backend services with proper mocking.
+- **Acceptance Criteria**:
+  - [ ] Write unit tests for `app.service.ts`
+  - [ ] Write unit tests for `systems.service.ts` (CRUD operations, validation)
+  - [ ] Write unit tests for `services.service.ts` (CRUD operations, relationships)
+  - [ ] Write unit tests for `contracts.service.ts` (CRUD operations, versioning)
+  - [ ] Write unit tests for `indexer.service.ts` (indexing logic, queue integration)
+  - [ ] Write unit tests for `extractor.service.ts` (contract extraction logic)
+  - [ ] Write unit tests for `analyzer.service.ts` (analysis logic, dependency detection)
+  - [ ] Write unit tests for `visualization.service.ts` (graph building, filtering)
+  - [ ] Write unit tests for `logger.service.ts` (logging methods, levels)
+  - [ ] Mock all external dependencies (database, Redis, queues)
+  - [ ] Achieve minimum 80% code coverage for all services
+- **Related**: [Architecture Design](./architecture_design.md), [Tech Stack](./tech_stack.md)
+- **Status**: Ready
+- **Dependencies**: Configure Test Coverage Thresholds
+
+##### 🟢 Write Backend Unit Tests for Controllers
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Create unit tests for all REST API controllers with request/response validation.
+- **Acceptance Criteria**:
+  - [ ] Write unit tests for `app.controller.ts`
+  - [ ] Write unit tests for `systems.controller.ts` (GET, POST, PUT, DELETE endpoints)
+  - [ ] Write unit tests for `services.controller.ts` (GET, POST, PUT, DELETE endpoints)
+  - [ ] Write unit tests for `contracts.controller.ts` (GET, POST, PUT, DELETE endpoints)
+  - [ ] Write unit tests for `indexer.controller.ts` (indexing endpoints, queue triggers)
+  - [ ] Write unit tests for `extractor.controller.ts` (extraction endpoints)
+  - [ ] Write unit tests for `analyzer.controller.ts` (analysis endpoints)
+  - [ ] Write unit tests for `visualization.controller.ts` (graph endpoints, filtering)
+  - [ ] Write unit tests for `health.controller.ts` (health check endpoints)
+  - [ ] Test request validation (DTO validation, error responses)
+  - [ ] Test rate limiting behavior
+  - [ ] Achieve minimum 80% code coverage for all controllers
+- **Related**: [Architecture Design](./architecture_design.md), [Tech Stack](./tech_stack.md)
+- **Status**: Ready
+- **Dependencies**: Configure Test Coverage Thresholds
+
+##### 🟢 Write Backend E2E Tests
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Create end-to-end tests for critical API workflows using test database.
+- **Acceptance Criteria**:
+  - [ ] Set up E2E test database configuration
+  - [ ] Write E2E tests for system CRUD operations
+  - [ ] Write E2E tests for service CRUD operations with relationships
+  - [ ] Write E2E tests for contract CRUD operations and versioning
+  - [ ] Write E2E tests for indexing workflow (trigger → queue → processing → storage)
+  - [ ] Write E2E tests for health check endpoint
+  - [ ] Write E2E tests for error handling (404, 400, 500 responses)
+  - [ ] Write E2E tests for rate limiting
+  - [ ] Configure test database cleanup (beforeEach/afterEach hooks)
+  - [ ] Document E2E test setup and execution
+- **Related**: [Architecture Design](./architecture_design.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
+- **Status**: Ready
+- **Dependencies**: Write Backend Unit Tests for Services, Write Backend Unit Tests for Controllers
+
+##### 🟢 Write Backend Integration Tests for Database
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Create integration tests for database operations and entity relationships.
+- **Acceptance Criteria**:
+  - [ ] Write integration tests for System entity (CRUD, validation)
+  - [ ] Write integration tests for Service entity (CRUD, relationships with System)
+  - [ ] Write integration tests for Contract entity (CRUD, JSONB fields)
+  - [ ] Write integration tests for ContractVersion entity (versioning, snapshots)
+  - [ ] Write integration tests for ServiceContractUsage entity (many-to-many relationships)
+  - [ ] Test database migrations (up/down)
+  - [ ] Test entity relationships and cascading operations
+  - [ ] Test database indexes and constraints
+  - [ ] Use test database with proper cleanup
+- **Related**: [Graph Storage Schema](./patterns/graph_storage_schema.md)
+- **Status**: Ready
+- **Dependencies**: Configure Test Coverage Thresholds
+
+##### 🟢 Write Backend Integration Tests for Queue System
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Create integration tests for BullMQ queue operations and job processing.
+- **Acceptance Criteria**:
+  - [ ] Write integration tests for queue job creation
+  - [ ] Write integration tests for queue job processing
+  - [ ] Write integration tests for queue job retry logic
+  - [ ] Write integration tests for queue job failure handling
+  - [ ] Test queue connection with Redis
+  - [ ] Test queue cleanup and job status tracking
+  - [ ] Use test Redis instance for isolation
+- **Related**: [Architecture Design](./architecture_design.md), [Data Ingestion Flow](./patterns/data_ingestion_flow.md)
+- **Status**: Ready
+- **Dependencies**: Configure Test Coverage Thresholds
+
+##### 🟢 Write Frontend Unit Tests for Components
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Create unit tests for React components using React Testing Library.
+- **Acceptance Criteria**:
+  - [ ] Write unit tests for `App.tsx` (routing, layout)
+  - [ ] Write unit tests for all page components (Systems, Services, Contracts, etc.)
+  - [ ] Write unit tests for all reusable components
+  - [ ] Test component rendering with different props
+  - [ ] Test user interactions (clicks, form submissions, navigation)
+  - [ ] Test component state changes
+  - [ ] Test error states and loading states
+  - [ ] Mock API calls and external dependencies
+  - [ ] Achieve minimum 80% code coverage for all components
+- **Related**: [Architecture Design](./architecture_design.md), [Tech Stack](./tech_stack.md)
+- **Status**: Ready
+- **Dependencies**: Configure Test Coverage Thresholds
+
+##### 🟢 Write Frontend Unit Tests for Hooks
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Create unit tests for custom React hooks.
+- **Acceptance Criteria**:
+  - [ ] Write unit tests for all custom hooks in `src/hooks/`
+  - [ ] Test hook return values and state updates
+  - [ ] Test hook side effects
+  - [ ] Test hook error handling
+  - [ ] Use `@testing-library/react-hooks` or `renderHook` from React Testing Library
+  - [ ] Mock dependencies and context providers
+  - [ ] Achieve minimum 80% code coverage for all hooks
+- **Related**: [Tech Stack](./tech_stack.md)
+- **Status**: Ready
+- **Dependencies**: Configure Test Coverage Thresholds
+
+##### 🟢 Write Frontend Unit Tests for Services
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Create unit tests for API client and service functions.
+- **Acceptance Criteria**:
+  - [ ] Write unit tests for API client (`src/services/api.ts`)
+  - [ ] Test HTTP request methods (GET, POST, PUT, DELETE)
+  - [ ] Test request/response interceptors
+  - [ ] Test error handling and retry logic
+  - [ ] Test authentication headers (if applicable)
+  - [ ] Mock axios and HTTP responses
+  - [ ] Achieve minimum 80% code coverage for all services
+- **Related**: [Tech Stack](./tech_stack.md)
+- **Status**: Ready
+- **Dependencies**: Configure Test Coverage Thresholds
+
+##### 🟢 Write Frontend Integration Tests
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Create integration tests for critical user workflows.
+- **Acceptance Criteria**:
+  - [ ] Write integration tests for system creation workflow
+  - [ ] Write integration tests for service creation workflow
+  - [ ] Write integration tests for contract viewing workflow
+  - [ ] Write integration tests for graph visualization workflow
+  - [ ] Test complete user journeys (multiple steps)
+  - [ ] Mock API responses with MSW (Mock Service Worker) or similar
+  - [ ] Test navigation between pages
+  - [ ] Test form submissions and data persistence
+- **Related**: [Architecture Design](./architecture_design.md)
+- **Status**: Ready
+- **Dependencies**: Write Frontend Unit Tests for Components, Write Frontend Unit Tests for Services
+
+##### 🟢 Setup Test Utilities and Helpers
+
+- **Assignee**: [TBD]
+- **Priority**: Medium
+- **Description**: Create reusable test utilities, mocks, and helpers for both backend and frontend.
+- **Acceptance Criteria**:
+  - [ ] Create backend test utilities (database helpers, mock factories)
+  - [ ] Create frontend test utilities (render helpers, mock providers)
+  - [ ] Create shared test data factories (entities, DTOs)
+  - [ ] Create mock implementations for external services (Redis, queues)
+  - [ ] Create API mock server setup (MSW or similar for frontend)
+  - [ ] Document test utilities usage
+  - [ ] Add examples in test files
+- **Related**: [Tech Stack](./tech_stack.md)
+- **Status**: Ready
+- **Dependencies**: None
+
+##### 🟢 Configure CI/CD Test Integration
+
+- **Assignee**: [TBD]
+- **Priority**: High
+- **Description**: Integrate test execution and coverage reporting into CI/CD pipeline.
+- **Acceptance Criteria**:
+  - [ ] Configure test execution in CI pipeline (GitHub Actions, GitLab CI, etc.)
+  - [ ] Run backend unit tests in CI
+  - [ ] Run backend E2E tests in CI
+  - [ ] Run frontend unit tests in CI
+  - [ ] Generate and upload coverage reports
+  - [ ] Set up coverage badges in README
+  - [ ] Configure test failure to block merges
+  - [ ] Add test result notifications
+  - [ ] Document CI test configuration
+- **Related**: [Tech Stack](./tech_stack.md)
+- **Status**: Ready
+- **Dependencies**: Configure Test Coverage Thresholds, Write Backend Unit Tests for Services, Write Frontend Unit Tests for Components
+
 ### Blocked Tasks
 
 _No blocked tasks at this time._

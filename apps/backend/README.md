@@ -5,6 +5,7 @@ NestJS backend application for Orchestr-AI.
 ## Overview
 
 This is the main backend API that handles:
+
 - Repository indexing
 - Contract extraction
 - Dependency graph building
@@ -34,6 +35,7 @@ cp .env.example .env
 ```
 
 Required environment variables:
+
 - `DB_HOST` - PostgreSQL host
 - `DB_USERNAME` - Database username
 - `DB_PASSWORD` - Database password
@@ -41,6 +43,7 @@ Required environment variables:
 - `REDIS_HOST` - Redis host
 
 Optional environment variables:
+
 - `PORT` - Server port (default: 3000)
 - `NODE_ENV` - Environment (development/production/test)
 - `FRONTEND_URL` - Frontend URL for CORS (default: http://localhost:5173)
@@ -76,6 +79,33 @@ pnpm test:e2e
 # Test coverage
 pnpm test:cov
 ```
+
+#### Test Coverage Requirements
+
+The project maintains minimum test coverage thresholds of **70%** for:
+
+- Statements
+- Branches
+- Functions
+- Lines
+
+Coverage reports are generated in multiple formats:
+
+- **HTML**: View detailed coverage in `coverage/index.html`
+- **JSON**: Machine-readable format for CI/CD integration
+- **LCOV**: For coverage badge integration
+- **Text/Text-Summary**: Console output
+
+The following files are excluded from coverage:
+
+- Test files (`*.spec.ts`, `*.test.ts`)
+- Type definitions (`*.d.ts`, `*.interface.ts`)
+- Data Transfer Objects (`*.dto.ts`)
+- Database migrations
+- Main entry point (`main.ts`)
+- Test directories
+
+**Note**: Coverage thresholds (70% minimum) are configured as a project requirement. Currently, threshold enforcement is disabled due to a known compatibility issue between Jest 29 and the v8 coverage provider. Thresholds will be re-enabled once sufficient test coverage is achieved or when the Jest issue is resolved. The target remains **70%** coverage for all metrics.
 
 ## Project Structure
 
@@ -117,6 +147,7 @@ src/
 ```
 
 Each module follows NestJS conventions with:
+
 - `*.module.ts` - Module definition
 - `*.controller.ts` - HTTP endpoints
 - `*.service.ts` - Business logic
@@ -149,4 +180,3 @@ pnpm db:migrate:create
 - [Architecture Design](../../memory_bank/architecture_design.md)
 - [Graph Storage Schema](../../memory_bank/patterns/graph_storage_schema.md)
 - [Tech Stack](../../memory_bank/tech_stack.md)
-

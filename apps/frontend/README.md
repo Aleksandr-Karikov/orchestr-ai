@@ -62,6 +62,30 @@ pnpm test:ui
 pnpm test:coverage
 ```
 
+#### Test Coverage Requirements
+
+The project maintains minimum test coverage thresholds of **70%** for:
+- Statements
+- Branches
+- Functions
+- Lines
+
+Coverage reports are generated in multiple formats:
+- **HTML**: View detailed coverage in `coverage/index.html`
+- **JSON**: Machine-readable format for CI/CD integration
+- **LCOV**: For coverage badge integration
+- **Text/Text-Summary**: Console output
+
+The following files are excluded from coverage:
+- Test files (`*.test.ts`, `*.test.tsx`, `*.spec.ts`, `*.spec.tsx`)
+- Type definitions (`*.d.ts`)
+- Configuration files (`*.config.*`)
+- Test directories (`test/`, `tests/`)
+- Main entry point (`main.tsx`)
+- Vite environment types (`vite-env.d.ts`)
+
+Coverage thresholds are enforced in Vitest configuration. The test suite will fail if thresholds are not met.
+
 ## Project Structure
 
 ```
